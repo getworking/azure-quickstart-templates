@@ -27,7 +27,7 @@ VCASH_ROOT=$(pwd)
 sudo apt-get -y install git build-essential
 sudo apt-get update
 
-file=test/bin/gcc-*/release/link-static/stack
+file=coin/test/bin/gcc-*/release/link-static/stack
 if [ ! -e "$file" ]
 then
     rm -rf .git
@@ -66,11 +66,11 @@ cd boost
 ./bjam link=static toolset=gcc cxxflags=-std=gnu++0x --with-system release
 cd $VCASH_ROOT
 
-cd test
-../deps/boost/bjam toolset=gcc cxxflags="-std=gnu++0x -fpermissive" release
+cd coin/test
+../../deps/boost/bjam toolset=gcc cxxflags="-std=gnu++0x -fpermissive" release
 cd $VCASH_ROOT
 
-sudo cp test/bin/gcc-*/release/link-static/stack /usr/bin/vcashd
+sudo cp coin/test/bin/gcc-*/release/link-static/stack /usr/bin/vcashd
 
 else
 #################################################################
